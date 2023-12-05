@@ -1,0 +1,82 @@
+version: '3'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: ./compose/local/django/Dockerfile
+    image: ad-stat-backend
+    command: /start
+    volumes:
+      - ./app:/app
+    ports:
+      - 8080:8000
+    depends_on:
+      - redis
+      - db
+    env_file:
+      - ./compose/.env
+    restart: always
+
+  db:
+    image: postgres:15.2-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    ports:
+      - ${POSTGRES_PORT}:5432
+    env_file:
+      - ./compose/.env
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"
+        ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7-alpine
+    volumes:
+      - redis_data:/data
+    ports:
+      - ${REDIS_PORT}:6379
+    env_file:
+      - ./compose/.env
+
+  celery_worker:
+    build:
+      context: .
+      dockerfile: ./compose/local/django/Dockerfile
+    image: ad-stat-backend
+    command: /start-celeryworker
+    volumes:
+      - ./app:/app
+    depends_on:
+      - redis
+      - db
+    env_file:
+      - ./compose/.env
+
+  celery_beat:
+    build:
+      context: .
+      dockerfile: ./compose/local/django/Dockerfile
+    image: ad-stat-backend
+    command: /start-celerybeat
+    volumes:
+      - ./app:/app
+    depends_on:
+      - redis
+      - db
+    env_file:
+      - ./compose/.env
+
+volumes:
+  postgres_data:
+  redis_data:

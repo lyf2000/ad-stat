@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+function dc(){
+    docker-compose  --env-file=compose/.env $@
+}
+
+dc $@

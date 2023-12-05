@@ -1,0 +1,3 @@
+from common.constants import CONSTANCE_CONFIG_
+
+CONSTANCE_CONFIG = CONSTANCE_CONFIG_
