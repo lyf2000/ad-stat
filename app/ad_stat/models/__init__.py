@@ -1,1 +1,1 @@
-from ad_stat.models.company import Company, CompanyResponsible
+from ad_stat.models.company import Company
