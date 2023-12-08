@@ -14,8 +14,6 @@ urlpatterns = [
     path("api/swagger/", SpectacularSwaggerView.as_view(url_name="schema"), name="swagger"),
     path("api/schema/redoc/", SpectacularRedocView.as_view(url_name="schema"), name="redoc"),
     path("api/schema/", SpectacularAPIView.as_view(), name="schema"),
-    path("api/", include("apps.users.api.urls")),
-    path("api/external/stats/", include("apps.stats.api.urls")),
 ]
 
 if settings.DEBUG:

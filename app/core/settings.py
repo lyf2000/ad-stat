@@ -45,7 +45,7 @@ APPS = ["ad_stat", "apps.users", "apps.stats"]
 
 INSTALLED_APPS = (
     [
-        "core.apps.MyAdminConfig",
+        "django.contrib.admin",
         "django.contrib.auth",
         "django.contrib.contenttypes",
         "django.contrib.sessions",
