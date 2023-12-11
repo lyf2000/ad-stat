@@ -34,14 +34,13 @@ ALLOWED_HOSTS = ["localhost", "127.0.0.1"] + os.environ.get("ALLOWED_HOSTS", "")
 THIRD_APPS = [
     "django_celery_beat",
     "corsheaders",
-    "constance",
     "admin_extra_buttons",
     "rest_framework",
     "drf_spectacular",
     "simple_history",
     "compressor",
 ]
-APPS = ["ad_stat", "apps.users", "apps.stats"]
+APPS = ["ad_stat", "apps.users"]
 
 INSTALLED_APPS = (
     [
