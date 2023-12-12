@@ -2,6 +2,7 @@ import logging
 from datetime import date, datetime
 from typing import Optional, Union
 
+from ad_stat.kafka.pub import kafka_publish
 from ad_stat.models.company import Company
 from ad_stat.services.noties.stat.yadirect.bounce.bounce_search.notifier import (
     YadirectCompanyBounceSearchNotifierService,
@@ -33,15 +34,17 @@ def weekly_search_bounce_notify(date_parser_kwargs: dict | None = None, companie
 
     for company in companies:
         start_date, end_date = WordToDateParser(**date_parser_kwargs, format="%Y-%m-%d")
-        state_notify.delay(
-            start_date=start_date,
-            end_date=end_date,
-            builder_name="search_bounce",
-            company_id=company.id,
+        kafka_publish(
+            "state_notify",
+            {
+                "start_date": start_date,
+                "end_date": end_date,
+                "builder_name": "search_bounce",
+                "company_id": company.id,
+            },
         )
 
 
-@shared_task
 def state_notify(
     start_date: Union[date, str],
     end_date: Union[date, str],

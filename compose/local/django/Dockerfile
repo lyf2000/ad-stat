@@ -34,9 +34,9 @@ COPY ./compose/local/django/celery/beat/start /start-celerybeat
 RUN sed -i 's/\r$//g' /start-celerybeat
 RUN chmod +x /start-celerybeat
 
-COPY ./compose/local/django/bot/start /start-bot
-RUN sed -i 's/\r$//g' /start-bot
-RUN chmod +x /start-bot
+COPY ./compose/local/django/kafka/sub/start /start-sub
+RUN sed -i 's/\r$//g' /start-sub
+RUN chmod +x /start-sub
 
 
 WORKDIR /app
