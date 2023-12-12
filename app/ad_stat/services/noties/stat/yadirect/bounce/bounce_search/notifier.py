@@ -63,7 +63,7 @@ class YadirectCompanyBounceSearchStatNotifierMessageBuilderService(BaseNotifierM
 
         start, end = self.start_date.strftime("%Y-%m-%d"), self.end_date.strftime("%Y-%m-%d")
         self.search_stats = CounterStatsDataCollector(company.ya_counter_id).search_stats_bounce(start, end)
-        self.searches_selected = [search for search in self.search_stats.searches if search.bounce_rate >= 15][:30]
+        self.searches_selected = self.search_stats.searches
 
     def get_head_msg(self) -> TgMessageItem | None:
         if not self.searches_selected:
