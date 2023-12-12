@@ -32,6 +32,8 @@ BOT_TOKEN=<specify>
 # YaMetrika
 CLIENT_ID=<specify>
 CLIENT_SECRET=<specify>
+YAMETRIKA_OAUTH_GET_CODE=https://oauth.yandex.ru/authorize?response_type=code&client_id=<CLIENT_ID>&redirect_uri=<specify>
+YAMETRIKA_OAUTH_GET_TOKEN=https://oauth.yandex.ru/token
 ```
 
 ## Startup
