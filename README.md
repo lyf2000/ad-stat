@@ -45,3 +45,5 @@ YAMETRIKA_OAUTH_GET_TOKEN=https://oauth.yandex.ru/token
 #### About `./dc`
 
 ##### This is just shorthand for docker-compose commands, like `./dc up`, `./dc down`, `./dc logs`
+
+### Goto localhost:8010/admin
