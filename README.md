@@ -10,31 +10,8 @@
 
 #### Here you will get BOT_TOKEN
 
-### Create  `.env` file in `compose` directory and specify keys
+### Create  `.env` file in `compose` directory and specify keys. [Sample]("./docs/example.env)
 
-```.env
-# Django
-POSTGRES_DB=<specify>
-POSTGRES_USER=<specify>
-POSTGRES_PASSWORD=<specify>
-POSTGRES_HOST=<specify>
-POSTGRES_PORT=<specify>
-
-REDIS_HOST=<specify>
-REDIS_PORT=<specify>
-REDIS_URI=redis://<specify>:<specify>/0
-
-CSRF_TRUSTED_ORIGINS=http://127.0.0.1,http://localhost<,specify>
-
-# Telegram
-BOT_TOKEN=<specify>
-
-# YaMetrika
-CLIENT_ID=<specify>
-CLIENT_SECRET=<specify>
-YAMETRIKA_OAUTH_GET_CODE=https://oauth.yandex.ru/authorize?response_type=code&client_id=<CLIENT_ID>&redirect_uri=<specify>
-YAMETRIKA_OAUTH_GET_TOKEN=https://oauth.yandex.ru/token
-```
 
 ## Features
 
