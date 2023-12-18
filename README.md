@@ -36,6 +36,12 @@ YAMETRIKA_OAUTH_GET_CODE=https://oauth.yandex.ru/authorize?response_type=code&cl
 YAMETRIKA_OAUTH_GET_TOKEN=https://oauth.yandex.ru/token
 ```
 
+## Features
+
+- Creation YandexToken model - store given token to access to yametrika service
+- Creation Company model - store representation of counter in yametrika
+- Scheduling and publishing notifications from yametrika to telegram by bot
+
 ## Startup
 
 ### Install [docker-for-ubuntu](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-20-04), [docker-compose-for-ubuntu](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-compose-on-ubuntu-20-04)
