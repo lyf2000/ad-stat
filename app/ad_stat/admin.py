@@ -18,11 +18,6 @@ class CompanyAdmin(ExtraButtonsMixin, admin.ModelAdmin):
     search_fields = ("name", "telegram_ids")
     autocomplete_fields = ("name", "telegram_ids")
 
-    def get_queryset(self, request):
-        qs = super().get_queryset(request)
-
-        return qs.of_user(user=request.user)
-
     def show_site_url(self, company: Company):
         return format_html("<a href='http://{url}'>{url}</a>", url=company.site_url)
 
