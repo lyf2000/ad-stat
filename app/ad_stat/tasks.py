@@ -20,7 +20,7 @@ logger = logging.getLogger("ad_stat.tasks")
 
 @shared_task
 def send_all_bounce_reports(companies: list[int] | None = None):
-    weekly_search_bounce_notify.delay(companies=companies)
+    weekly_search_bounce_notify(companies=companies)
 
 
 @shared_task

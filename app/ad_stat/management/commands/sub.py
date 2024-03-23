@@ -30,12 +30,14 @@ class Command(BaseCommand):
                 msg = list(msg.values())[0][0]
                 print("aaaaaaa", msg)
                 json_message = json.loads(msg.value.decode())
-                state_notify(
-                    start_date=json_message["start_date"],
-                    end_date=json_message["end_date"],
-                    builder_name=json_message["builder_name"],
-                    company_id=json_message["company_id"],
-                )
-
+                try:
+                    state_notify(
+                        start_date=json_message["start_date"],
+                        end_date=json_message["end_date"],
+                        builder_name=json_message["builder_name"],
+                        company_id=json_message["company_id"],
+                    )
+                except Exception as e:
+                    print(e)
         finally:
             consumer.close()
